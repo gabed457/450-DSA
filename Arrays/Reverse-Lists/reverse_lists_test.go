@@ -6,18 +6,26 @@ import (
 	"testing"
 )
 
-type reverseListTest struct {
+type reverseListIntTest struct {
 	arg1, expected []int
 }
+type reverseListFloat32Test struct {
+	arg1, expected []float32
+}
 
-var reverseListTests = []reverseListTest{
-	reverseListTest{[]int{1, 2, 3, 4, 5}, []int{5, 4, 3, 2, 1}},
-	reverseListTest{[]int{-1, 2, -3, 4, -5}, []int{-5, 4, -3, 2, -1}},
-	reverseListTest{[]int{1, 2, 3, 4, 5}, []int{5, 4, 3, 2, 1}},
+var reverseListIntTests = []reverseListIntTest{
+	reverseListIntTest{[]int{1, 2, 3, 4, 5}, []int{5, 4, 3, 2, 1}},
+	reverseListIntTest{[]int{-1, 2, -3, 4, -5}, []int{-5, 4, -3, 2, -1}},
+	reverseListIntTest{[]int{1, 2, 3, 4, 5}, []int{5, 4, 3, 2, 1}},
+}
+var reverseListFloat32Tests = []reverseListFloat32Test{
+	reverseListFloat32Test{[]float32{1, 2, 3, 4, 5}, []float32{5, 4, 3, 2, 1}},
+	reverseListFloat32Test{[]float32{-1, 2, -3, 4, -5}, []float32{-5, 4, -3, 2, -1}},
+	reverseListFloat32Test{[]float32{1, 2, 3, 4, 5}, []float32{5, 4, 3, 2, 1}},
 }
 
 func TestReverseLists(t *testing.T) {
-	for _, test := range reverseListTests {
+	for _, test := range reverseListIntTests {
 		if output := reverseList(test.arg1); !reflect.DeepEqual(output, test.expected) {
 			t.Errorf("Output %q not equal to expected %q", output, test.expected)
 		}
